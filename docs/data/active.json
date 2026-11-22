@@ -1,0 +1,327 @@
+{
+  "updated_at": "2026-11-22 16:41 CST",
+  "count": 13,
+  "deals": [
+    {
+      "id": "deal-429121bd21",
+      "tier": "S",
+      "score": 90,
+      "score_reasons": [
+        "大额收益(约150元)+38",
+        "T1官方直出+28",
+        "命中关注城市(上海)+8"
+      ],
+      "trust_tier": "T1",
+      "verified_sources": [
+        "解放日报·上观新闻"
+      ],
+      "promo_warning": false,
+      "matched_tags": [
+        "上海"
+      ],
+      "category": "本地生活",
+      "title": "上海静安文旅消费券（酒店/文创展演）",
+      "benefit": "酒店满 500 减 100 / 满 800 减 150；文创展演满 100 减 30 / 满 200 减 60",
+      "steps": "支付宝搜「乐游静安」，11 月 23 日起每周一上午 10:00 开抢（首期有效期至 11 月 29 日），酒店券和文创券各限核销 1 次，覆盖合作酒店、影院、剧场与书店。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "解放日报·上观新闻",
+      "source_url": "https://www.jfdaily.com/sgh/detail?id=4098551"
+    },
+    {
+      "id": "deal-fe99dbbf6a",
+      "tier": "S",
+      "score": 82,
+      "score_reasons": [
+        "大额收益(约500元)+38",
+        "T2社区/多源印证(1源)+22",
+        "全国普适+6"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "搜狐国补汇总"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "2026第四批消费品以旧换新国补（家电/数码）",
+      "benefit": "数码手机平板等最高补贴 500 元，家电大件结算直减",
+      "steps": "京东 App 搜「国补960」「数码588」「家电588」或淘宝认准「国家补贴」标识结算立减；同一身份证家电/数码全年各限 1 次，各地资金池额度用完即止。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-12-31",
+      "source_name": "搜狐国补汇总",
+      "source_url": "https://m.sohu.com/a/1104168106_120815119?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334"
+    },
+    {
+      "id": "deal-b59259ee92",
+      "tier": "S",
+      "score": 76,
+      "score_reasons": [
+        "大额收益(约60元)+38",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "网易云联合年卡（买一得八）及主流影音会员低价",
+      "benefit": "网易云 228 元得 8 项会员（含爱奇艺/京东 PLUS/B 站等）；QQ 音乐 99 元/年；芒果 TV 约 55.8 元/年",
+      "steps": "网易云 App 会员中心直开联合年卡；QQ 音乐选年费+网银/财付通支付享 99 元（记得关自动续费）；官方手机号直充避免第三方封号风险。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-12-31",
+      "source_name": "什么值得买",
+      "source_url": "https://post.smzdm.com/talk/p/avgrkep9/"
+    },
+    {
+      "id": "deal-e89464ce5d",
+      "tier": "A",
+      "score": 70,
+      "score_reasons": [
+        "中等收益(约20元)+22",
+        "T2社区/多源印证(1源)+22",
+        "命中常用卡(农行)+10"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买"
+      ],
+      "promo_warning": false,
+      "matched_tags": [
+        "农业银行"
+      ],
+      "category": "银行支付",
+      "title": "农业银行生活缴费立减",
+      "benefit": "水电燃气等日常缴费最高立减 20 元",
+      "steps": "通过农业银行指定缴费渠道完成日常水电燃气缴费即可参与满减优惠。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-30",
+      "source_name": "什么值得买",
+      "source_url": "https://www.smzdm.com/p/185999280/"
+    },
+    {
+      "id": "deal-df36a12467",
+      "tier": "A",
+      "score": 66,
+      "score_reasons": [
+        "中等收益(约12元)+22",
+        "T1官方直出+28"
+      ],
+      "trust_tier": "T1",
+      "verified_sources": [
+        "美团城市攻略宝"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "本地生活",
+      "title": "美团会员「惊喜多选 1」每周 0 元领饮品权益",
+      "benefit": "每周 0 元任选 1 项权益（覆盖蜜雪/古茗/喜茶/瑞幸/星巴克等）",
+      "steps": "美团 L3+ 会员在美团 App 搜索「惊喜多选1」进入会员 666 页面，每周五 0 点刷新权益池，直领类权益直接领。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-12-31",
+      "source_name": "美团城市攻略宝",
+      "source_url": "https://source.meituan.com/meituan-member/surprise-pick-1"
+    },
+    {
+      "id": "deal-bbcc19b8ea",
+      "tier": "A",
+      "score": 64,
+      "score_reasons": [
+        "大额收益(约50元)+38",
+        "满额门槛偏高-12",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "银行支付",
+      "title": "兴业银行淘天消费满减",
+      "benefit": "淘宝 / 天猫满 5000 减 50 元",
+      "steps": "在淘宝或天猫下单结算时选择兴业银行卡支付享满减，适合年底大额刚需购物。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-30",
+      "source_name": "什么值得买",
+      "source_url": "https://www.smzdm.com/p/185999280/"
+    },
+    {
+      "id": "deal-5783db60ea",
+      "tier": "A",
+      "score": 60,
+      "score_reasons": [
+        "中等收益(约16元)+22",
+        "T3单源线报+12",
+        "命中常用卡(工行)+10"
+      ],
+      "trust_tier": "T3",
+      "verified_sources": [
+        "赚吧线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [
+        "工商银行"
+      ],
+      "category": "银行支付",
+      "title": "工商银行小雪节气领 i 豆（保底 1650+ 豆）",
+      "benefit": "小雪问答(200–2026豆) + 小雪映冬色(300豆) + 节气典藏(1000豆) + 消费季(100豆)",
+      "steps": "工行 App 首页顶部进入「小雪」节气活动完成问答与打卡，再搜索「工行消费季」领 100 豆，i 豆可兑换微信立减金或京东 E 卡。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-24",
+      "source_name": "赚吧线报",
+      "source_url": "https://www.hxm5.com/xianbao/5/"
+    },
+    {
+      "id": "deal-34bb3bc552",
+      "tier": "B",
+      "score": 50,
+      "score_reasons": [
+        "中等收益(约12元)+22",
+        "T3单源线报+12"
+      ],
+      "trust_tier": "T3",
+      "verified_sources": [
+        "赚吧线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "本地生活",
+      "title": "平安好车主免费领 6 瓶百岁山（今日线报）",
+      "benefit": "0 元领取 6 瓶百岁山矿泉水",
+      "steps": "打开平安好车主 App，首页定位切换为「佛山」后进入家庭权益活动扫码领取。实时线报名额随时可能结束，手快有。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-23",
+      "source_name": "赚吧线报",
+      "source_url": "https://www.hxm5.com/xianbao/5/"
+    },
+    {
+      "id": "deal-f61f8dc39a",
+      "tier": "B",
+      "score": 50,
+      "score_reasons": [
+        "小额顺手(约6元)+12",
+        "T3单源线报+12",
+        "命中常用卡(建行)+10"
+      ],
+      "trust_tier": "T3",
+      "verified_sources": [
+        "赚吧线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [
+        "建设银行"
+      ],
+      "category": "银行支付",
+      "title": "云闪付生活缴费·建行裕农通信用卡满 4 随机立减",
+      "benefit": "实测缴费 10 元两次均立减 6 元以上",
+      "steps": "在云闪付 App「生活缴费」使用建行裕农通信用卡付款满 4 元触发随机立减（具体卡片是否受邀以实测为准）。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-30",
+      "source_name": "赚吧线报",
+      "source_url": "https://www.hxm5.com/xianbao/5/"
+    },
+    {
+      "id": "deal-b884960cc2",
+      "tier": "B",
+      "score": 48,
+      "score_reasons": [
+        "小额顺手(约3元)+12",
+        "满额门槛偏高-12",
+        "T3单源线报+12",
+        "命中常用卡(建行)+10"
+      ],
+      "trust_tier": "T3",
+      "verified_sources": [
+        "赚吧线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [
+        "建设银行"
+      ],
+      "category": "银行支付",
+      "title": "支付宝还中信信用卡立减 + 建行支付达标抽立减金",
+      "benefit": "支付宝还中信满 1000 减 3/减 2 各一次；建行抽 2–8 元立减金",
+      "steps": "支付宝信用卡还款选中信卡立减；建行 App 搜索「支付达标」查看可抽次数。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-30",
+      "source_name": "赚吧线报",
+      "source_url": "https://www.hxm5.com/xianbao/5/"
+    },
+    {
+      "id": "deal-295e21c305",
+      "tier": "B",
+      "score": 47,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22",
+        "命中常用卡(建行)+10",
+        "有前置门槛-6"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "搜狐银行线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [
+        "建设银行"
+      ],
+      "category": "银行支付",
+      "title": "建行龙卡正青春卡云闪付随机立减",
+      "benefit": "云闪付消费满 20 元随机立减",
+      "steps": "需持有建设银行龙卡正青春卡，日常消费通过云闪付付款即可触发随机立减。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-12-31",
+      "source_name": "搜狐银行线报",
+      "source_url": "https://www.sohu.com/a/1087909776_120967551"
+    },
+    {
+      "id": "deal-cf0bc122fa",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "本地生活",
+      "title": "库迪咖啡果饮系列 4 选 1 特价",
+      "benefit": "团购好价 7.9 元喝库迪果饮",
+      "steps": "通过美团渠道购买库迪果饮 4 选 1 券，到店核销使用。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-30",
+      "source_name": "什么值得买",
+      "source_url": "https://www.smzdm.com/p/186265668/"
+    },
+    {
+      "id": "deal-3d9227441b",
+      "tier": "B",
+      "score": 40,
+      "score_reasons": [
+        "小额顺手(约5元)+12",
+        "T3单源线报+12"
+      ],
+      "trust_tier": "T3",
+      "verified_sources": [
+        "赚吧线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "本地生活",
+      "title": "中国电信会员日（1 积分兑 / 话费券放水）",
+      "benefit": "1 积分兑换权益，话费满 5 减 5 / 200 积分福利",
+      "steps": "中国电信 App 搜索「会员日」进入参与，限中国电信手机号用户，名额分批释放。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-23",
+      "source_name": "赚吧线报",
+      "source_url": "https://www.hxm5.com/xianbao/5/"
+    }
+  ]
+}

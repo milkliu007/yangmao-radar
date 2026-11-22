@@ -1,0 +1,13 @@
+{
+  "updated_at": "2026-11-22 16:41 CST",
+  "sources": [
+    {
+      "id": "seed",
+      "name": "初始核验数据",
+      "status": "ok",
+      "message": "导入 15 条",
+      "count": 15
+    }
+  ],
+  "new_s_count": 3
+}
