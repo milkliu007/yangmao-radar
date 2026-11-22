@@ -1,0 +1,44 @@
+name: 更新国内羊毛看板
+
+on:
+  schedule:
+    - cron: '15 1,12 * * *'
+    - cron: '45 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-deals:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch, verify, and score deals
+        env:
+          RSSHUB_BASE_URL: ${{ secrets.RSSHUB_BASE_URL }}
+        run: python3 scripts/fetch_and_score.py
+      - name: Send S-tier notifications (optional)
+        env:
+          BARK_URL: ${{ secrets.BARK_URL }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+          DASHBOARD_URL: ${{ secrets.DASHBOARD_URL }}
+        run: python3 scripts/notify.py
+      - name: Commit updated JSON data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/
+          if git diff --cached --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "chore: update deals $(date +'%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
