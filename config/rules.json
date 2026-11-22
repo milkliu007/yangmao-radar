@@ -1,0 +1,71 @@
+{
+  "schedule_note": "北京时间每日 09:15、13:45、20:15 三次黄金窗口执行，配合随机抖动与 ETag 缓存降低风控风险",
+  "user_profile": {
+    "my_banks": ["招商银行", "工商银行", "建设银行", "农业银行", "中国银行"],
+    "my_cities": ["全国", "上海", "北京", "深圳", "广州", "杭州"]
+  },
+  "rsshub_mirrors": [
+    "https://rsshub.app",
+    "https://rsshub.rssforever.com",
+    "https://hub.slarker.me"
+  ],
+  "sources": [
+    {
+      "id": "smzdm-youhui",
+      "name": "什么值得买·精选好价",
+      "type": "rsshub",
+      "route": "/smzdm/ranking/pinlei/11/3",
+      "trust_tier": "T2",
+      "default_category": "电商补贴",
+      "enabled": true
+    },
+    {
+      "id": "smzdm-bank",
+      "name": "什么值得买·银行活动",
+      "type": "rsshub",
+      "route": "/smzdm/keyword/银行立减金",
+      "trust_tier": "T2",
+      "default_category": "银行支付",
+      "enabled": true
+    },
+    {
+      "id": "smzdm-life",
+      "name": "什么值得买·本地生活优惠",
+      "type": "rsshub",
+      "route": "/smzdm/keyword/外卖券",
+      "trust_tier": "T2",
+      "default_category": "本地生活",
+      "enabled": true
+    },
+    {
+      "id": "xianbao-zhuanba",
+      "name": "赚吧线报（公开镜像）",
+      "type": "html_list",
+      "url": "https://www.hxm5.com/xianbao/5/",
+      "trust_tier": "T3",
+      "default_category": "银行支付",
+      "enabled": true
+    }
+  ],
+  "scoring": {
+    "blacklist_keywords": [
+      "AI免费", "AI 免费", "免费额度", "免费API", "API额度", "Token", "DeepSeek额度", "Claude", "ChatGPT", "Gemini API",
+      "VPS", "云服务器", "轻量服务器", "轻量应用服务器", "域名注册", "建站", "机场推荐", "节点",
+      "砍一刀", "拉人头", "邀请好友", "助力", "拉新", "拼团助力", "接码", "搬砖", "兼职", "网贷", "借钱", "征信"
+    ],
+    "expired_keywords": [
+      "已黄", "黄了", "已结束", "已失效", "无货", "抢光", "领完", "凉了", "下架", "已下线"
+    ],
+    "promo_code_hints": [
+      "搜口令", "复制口令", "回复关键词", "隐藏券", "内部券"
+    ],
+    "tier_thresholds": {
+      "S": 75,
+      "A": 52,
+      "B": 35
+    },
+    "archive_retention_days": 30,
+    "circuit_breaker_max_failures": 3,
+    "circuit_breaker_cooldown_hours": 24
+  }
+}
