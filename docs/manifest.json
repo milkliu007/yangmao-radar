@@ -1,0 +1,9 @@
+{
+  "name": "国内每日羊毛看板",
+  "short_name": "羊毛看板",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#ffffff",
+  "description": "国内大小羊毛自动化分级监控看板（已排除 AI/VPS/拉人头）"
+}

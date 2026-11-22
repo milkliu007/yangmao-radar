@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>国内每日大小羊毛看板 · 自托管版</title>
+  <link rel="manifest" href="./manifest.json" />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen overflow-x-hidden antialiased">
+  <!-- Sticky Header -->
+  <header class="sticky top-0 z-30 bg-white/92 backdrop-blur-md border-b border-slate-200/80">
+    <div class="max-w-4xl mx-auto px-4 py-3">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-500 to-orange-500 flex items-center justify-center text-white font-bold shadow-sm shrink-0">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="min-w-0">
+            <h1 class="text-base sm:text-lg font-bold tracking-tight text-slate-900 truncate">国内羊毛雷达</h1>
+            <p id="headerMeta" class="text-[11px] text-slate-500 truncate">每日 3 次黄金窗口自动更新 · 0 AI 消耗</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+          <button id="openProfileBtn" type="button" class="px-2.5 py-2 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 active:scale-95 transition">
+            我的卡包
+          </button>
+          <button id="openAddModalBtn" type="button" class="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 active:scale-95 transition">
+            <span>+ 记一条</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Segmented Tabs -->
+      <nav class="mt-3 grid grid-cols-3 gap-1 p-1 bg-slate-100 rounded-xl" aria-label="视图切换">
+        <button type="button" data-tab="active" class="tab-btn py-2 px-2 rounded-lg text-xs sm:text-sm font-semibold transition text-center bg-white text-slate-900 shadow-sm">
+          可薅总榜 <span id="tabActiveBadge" class="ml-1 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] rounded-full bg-rose-100 text-rose-700">0</span>
+        </button>
+        <button type="button" data-tab="rules" class="tab-btn py-2 px-2 rounded-lg text-xs sm:text-sm font-medium transition text-center text-slate-600 hover:text-slate-900">
+          评审与防风控
+        </button>
+        <button type="button" data-tab="archive" class="tab-btn py-2 px-2 rounded-lg text-xs sm:text-sm font-medium transition text-center text-slate-600 hover:text-slate-900">
+          历史/已黄 <span id="tabArchiveBadge" class="ml-1 inline-flex items-center justify-center px-1.5 py-0.5 text-[10px] rounded-full bg-slate-200 text-slate-700">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 pt-4 pb-16">
+    <!-- Active View -->
+    <section id="viewActive" class="space-y-3.5">
+      <!-- Source Health Strip -->
+      <div class="bg-white rounded-2xl px-3.5 py-2.5 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-2 text-xs">
+        <div class="flex items-center gap-2 min-w-0">
+          <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 shrink-0"></span>
+          <span id="healthSummary" class="text-slate-700 font-medium truncate">数据源正常 · 09:15 / 13:45 / 20:15 自动刷新</span>
+        </div>
+        <span id="lastUpdatedBadge" class="text-[11px] text-slate-400 shrink-0">更新于 2026-11-22</span>
+      </div>
+
+      <!-- KPI Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        <div class="bg-white rounded-2xl p-3 border border-slate-200/80 shadow-sm">
+          <div class="text-xs text-slate-500 font-medium">当前有效</div>
+          <div id="kpiActive" class="mt-0.5 text-2xl font-bold text-slate-900">0</div>
+        </div>
+        <div class="bg-white rounded-2xl p-3 border border-rose-200/80 shadow-sm">
+          <div class="text-xs text-rose-600 font-medium">S 级必薅</div>
+          <div id="kpiS" class="mt-0.5 text-2xl font-bold text-rose-600">0</div>
+        </div>
+        <div class="bg-white rounded-2xl p-3 border border-amber-200/80 shadow-sm">
+          <div class="text-xs text-amber-700 font-medium">48h 内截止</div>
+          <div id="kpiUrgent" class="mt-0.5 text-2xl font-bold text-amber-600">0</div>
+        </div>
+        <div class="bg-white rounded-2xl p-3 border border-emerald-200/80 shadow-sm">
+          <div class="text-xs text-emerald-700 font-medium">已薅打卡</div>
+          <div id="kpiClaimed" class="mt-0.5 text-2xl font-bold text-emerald-600">0</div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="bg-white rounded-2xl p-3.5 border border-slate-200/80 shadow-sm space-y-2.5">
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5" role="group" aria-label="按等级筛选">
+          <button type="button" data-tier="ALL" class="tier-filter px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 transition bg-slate-900 text-white">全部等级</button>
+          <button type="button" data-tier="S" class="tier-filter px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 transition bg-rose-50 text-rose-700 border border-rose-200">S级 必薅</button>
+          <button type="button" data-tier="A" class="tier-filter px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 transition bg-amber-50 text-amber-800 border border-amber-200">A级 顺手毛</button>
+          <button type="button" data-tier="B" class="tier-filter px-3 py-1.5 rounded-full text-xs font-semibold shrink-0 transition bg-sky-50 text-sky-800 border border-sky-200">B级 小毛</button>
+        </div>
+
+        <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-0.5" role="group" aria-label="按分类和可信度筛选">
+          <button type="button" data-cat="ALL" class="cat-filter px-2.5 py-1 rounded-lg text-xs font-medium shrink-0 transition bg-slate-900 text-white">全部分类</button>
+          <button type="button" data-cat="电商补贴" class="cat-filter px-2.5 py-1 rounded-lg text-xs font-medium shrink-0 transition bg-slate-100 text-slate-600">电商补贴</button>
+          <button type="button" data-cat="银行支付" class="cat-filter px-2.5 py-1 rounded-lg text-xs font-medium shrink-0 transition bg-slate-100 text-slate-600">银行支付</button>
+          <button type="button" data-cat="本地生活" class="cat-filter px-2.5 py-1 rounded-lg text-xs font-medium shrink-0 transition bg-slate-100 text-slate-600">本地生活</button>
+          <button type="button" id="verifiedOnlyBtn" class="px-2.5 py-1 rounded-lg text-xs font-medium shrink-0 transition bg-emerald-50 text-emerald-700 border border-emerald-200">仅看 T1/T2 实测</button>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2">
+          <div class="relative flex-1">
+            <svg class="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1010.5 18a7.5 7.5 0 006.15-3.35z" /></svg>
+            <input id="searchInput" type="search" placeholder="搜银行、城市、平台或关键词…" class="w-full pl-9 pr-3 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-slate-900/15 focus:bg-white" />
+          </div>
+          <div class="flex items-center gap-2">
+            <select id="sortSelect" aria-label="排序方式" class="flex-1 sm:flex-none px-3 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl text-slate-700">
+              <option value="score">按评分优先</option>
+              <option value="deadline">按最快截止</option>
+              <option value="newest">按最新收录</option>
+            </select>
+            <label class="inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 cursor-pointer select-none shrink-0">
+              <input id="profileOnlyToggle" type="checkbox" class="rounded border-slate-300 text-slate-900" />
+              <span>贴合卡包</span>
+            </label>
+            <label class="inline-flex items-center gap-1.5 px-2.5 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 cursor-pointer select-none shrink-0">
+              <input id="hideClaimedToggle" type="checkbox" class="rounded border-slate-300 text-slate-900" />
+              <span>隐藏已薅</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards Grid -->
+      <div id="activeCards" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      <div id="activeEmpty" class="hidden bg-white rounded-2xl p-8 border border-slate-200/80 text-center space-y-2">
+        <p class="text-sm font-semibold text-slate-700">当前筛选条件下没有活动</p>
+        <p class="text-xs text-slate-500">试试取消“仅看 T1/T2”或“贴合卡包”开关，或切换等级胶囊。</p>
+      </div>
+    </section>
+
+    <!-- Rules & Anti-Bot View -->
+    <section id="viewRules" class="hidden space-y-3.5">
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm space-y-3">
+        <div>
+          <h2 class="text-base font-bold text-slate-900">0–100 透明纯规则评审制度</h2>
+          <p class="mt-1 text-xs text-slate-500 leading-relaxed">每张卡片都公开展示分值与加减分理由，0 大模型消耗，杜绝营销软文混进 S 级。</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
+          <div class="p-3 rounded-xl bg-rose-50/70 border border-rose-200/70">
+            <div class="font-bold text-rose-700">S 级（≥75 分）</div>
+            <p class="mt-1 text-slate-600 leading-relaxed">大额直减/高折扣国补/文旅券，且**必须为 T1 官方或 T2 社区多源印证**，T3 单源绝不评 S。</p>
+          </div>
+          <div class="p-3 rounded-xl bg-amber-50/70 border border-amber-200/70">
+            <div class="font-bold text-amber-800">A 级（52–74 分）</div>
+            <p class="mt-1 text-slate-600 leading-relaxed">10–30 元高频刚需（缴费/还款/饮品）或命中常用银行卡的优质顺手毛。</p>
+          </div>
+          <div class="p-3 rounded-xl bg-sky-50/70 border border-sky-200/70">
+            <div class="font-bold text-sky-800">B 级（35–51 分）</div>
+            <p class="mt-1 text-slate-600 leading-relaxed">2–10 元小额、限定卡种或含口令待实测线报；&lt;35 分或命中黑名单（AI/VPS/拉人头）直接丢弃。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm space-y-2.5">
+        <h3 class="text-sm font-bold text-slate-900">信源可信度分级（防软文 / 防秒黄）</h3>
+        <div class="space-y-2 text-xs">
+          <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200/70 flex items-start gap-2.5">
+            <span class="px-2 py-0.5 rounded-md bg-emerald-600 text-white font-bold shrink-0">T1 官方</span>
+            <p class="text-slate-700">政府公告、官方媒体或银行/平台官方规则页，可信度最高（+28 分）。</p>
+          </div>
+          <div class="p-3 rounded-xl bg-blue-50/70 border border-blue-200/70 flex items-start gap-2.5">
+            <span class="px-2 py-0.5 rounded-md bg-blue-600 text-white font-bold shrink-0">T2 社区</span>
+            <p class="text-slate-700">什么值得买等高活跃社区，或 ≥2 个独立源交叉印证的活动（+22~30 分）。</p>
+          </div>
+          <div class="p-3 rounded-xl bg-slate-100 border border-slate-200 flex items-start gap-2.5">
+            <span class="px-2 py-0.5 rounded-md bg-slate-600 text-white font-bold shrink-0">T3 单源</span>
+            <p class="text-slate-700">单条实时线报或含推广口令帖子（+12 分，含口令再扣 6 分且封顶 A 级），建议点进原帖核实库存。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm space-y-2">
+        <h3 class="text-sm font-bold text-slate-900">防风控调度策略（为什么不是每 2 小时硬爬）</h3>
+        <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4 leading-relaxed">
+          <li><strong>每日 3 次黄金窗口</strong>：仅在北京时间 09:15、13:45、20:15 自动触发，深夜休眠，避免高频请求触发 WAF 限流。</li>
+          <li><strong>随机抖动 + 304 缓存</strong>：启动先随机等待 15–75 秒，并携带 ETag / Last-Modified 请求头，页面未变动直接复用缓存。</li>
+          <li><strong>熔断冷却机制</strong>：单源连续失败 3 次自动冷却 24 小时，绝不死磕撞墙，并在顶部状态条提示。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Archive View -->
+    <section id="viewArchive" class="hidden space-y-3">
+      <div class="flex items-center justify-between gap-2 bg-white rounded-2xl px-4 py-3 border border-slate-200/80 shadow-sm">
+        <div>
+          <h2 class="text-sm font-bold text-slate-900">历史归档与已黄条目</h2>
+          <p class="text-xs text-slate-500">已过期或被你点「标黄」的活动会收进这里，保持总榜清爽</p>
+        </div>
+        <button id="resetDataBtn" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 transition shrink-0">
+          重置本地状态
+        </button>
+      </div>
+      <div id="archiveCards" class="grid grid-cols-1 md:grid-cols-2 gap-3"></div>
+      <div id="archiveEmpty" class="hidden bg-white rounded-2xl p-8 border border-slate-200/80 text-center space-y-2">
+        <p class="text-sm font-semibold text-slate-700">暂无归档或标黄活动</p>
+        <p class="text-xs text-slate-500">在总榜里点「标黄」或等活动过期后会自动移到这里。</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Profile Modal (My Banks & Cities) -->
+  <div id="profileModal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-slate-900/50 p-0 sm:p-4" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle">
+    <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-2xl shadow-xl p-5 space-y-4 max-h-[85vh] overflow-y-auto">
+      <div class="flex items-center justify-between">
+        <h2 id="profileModalTitle" class="text-base font-bold text-slate-900">我的卡包与常驻城市</h2>
+        <button id="closeProfileBtn" type="button" class="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100" aria-label="关闭">✕</button>
+      </div>
+      <p class="text-xs text-slate-500">勾选你持有的银行卡和常驻城市，开启“贴合卡包”后会自动过滤掉无关银行和外地消费券。</p>
+      <div>
+        <div class="text-xs font-semibold text-slate-700 mb-2">常用银行</div>
+        <div id="bankCheckboxes" class="flex flex-wrap gap-1.5"></div>
+      </div>
+      <div>
+        <div class="text-xs font-semibold text-slate-700 mb-2">关注城市</div>
+        <div id="cityCheckboxes" class="flex flex-wrap gap-1.5"></div>
+      </div>
+      <button id="saveProfileBtn" type="button" class="w-full py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold hover:bg-slate-800 transition">保存筛选配置</button>
+    </div>
+  </div>
+
+  <!-- Add Deal Modal -->
+  <div id="addModal" class="fixed inset-0 z-50 hidden items-end sm:items-center justify-center bg-slate-900/50 p-0 sm:p-4" role="dialog" aria-modal="true" aria-labelledby="addModalTitle">
+    <div class="bg-white w-full sm:max-w-lg rounded-t-3xl sm:rounded-2xl shadow-xl max-h-[90vh] overflow-y-auto">
+      <div class="sticky top-0 bg-white px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+        <h2 id="addModalTitle" class="text-base font-bold text-slate-900">手动补充一条羊毛</h2>
+        <button id="closeAddModalBtn" type="button" class="p-1.5 rounded-lg text-slate-400 hover:bg-slate-100" aria-label="关闭">✕</button>
+      </div>
+      <form id="addDealForm" class="p-5 space-y-3">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label for="inputTier" class="block text-xs font-semibold text-slate-700 mb-1">评级</label>
+            <select id="inputTier" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl">
+              <option value="S">S级 · 必薅</option>
+              <option value="A" selected>A级 · 顺手毛</option>
+              <option value="B">B级 · 小毛</option>
+            </select>
+          </div>
+          <div>
+            <label for="inputCategory" class="block text-xs font-semibold text-slate-700 mb-1">分类</label>
+            <select id="inputCategory" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl">
+              <option value="银行支付">银行支付</option>
+              <option value="电商补贴">电商补贴</option>
+              <option value="本地生活">本地生活</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="inputTitle" class="block text-xs font-semibold text-slate-700 mb-1">活动名称</label>
+          <input id="inputTitle" type="text" required placeholder="例如：招行周三五折餐饮券" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl" />
+        </div>
+        <div>
+          <label for="inputBenefit" class="block text-xs font-semibold text-slate-700 mb-1">核心福利</label>
+          <input id="inputBenefit" type="text" required placeholder="例如：满100减50元" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl" />
+        </div>
+        <div>
+          <label for="inputSteps" class="block text-xs font-semibold text-slate-700 mb-1">参与方式</label>
+          <textarea id="inputSteps" rows="2" required placeholder="入口和注意事项" class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl"></textarea>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="inputDeadline" class="block text-xs font-semibold text-slate-700 mb-1">截止日期</label>
+            <input id="inputDeadline" type="date" required class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl" />
+          </div>
+          <div>
+            <label for="inputUrl" class="block text-xs font-semibold text-slate-700 mb-1">来源链接（选填）</label>
+            <input id="inputUrl" type="url" placeholder="https://..." class="w-full px-3 py-2 text-sm bg-slate-50 border border-slate-200 rounded-xl" />
+          </div>
+        </div>
+        <div class="pt-2 flex gap-2">
+          <button type="button" id="cancelAddBtn" class="flex-1 py-2.5 rounded-xl bg-slate-100 text-slate-700 text-sm font-semibold">取消</button>
+          <button type="submit" class="flex-1 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-semibold">保存到总榜</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-full bg-slate-900 text-white text-xs font-medium shadow-lg opacity-0 pointer-events-none transition-opacity duration-200"></div>
+
+  <script>
+    (function () {
+      const PREF_KEY = "yangmao_radar_prefs_v2";
+      const LAST_SEEN_KEY = "yangmao_radar_last_seen_v2";
+      const ALL_BANKS = ["工行", "建行", "农行", "中行", "招行", "交行", "邮储", "兴业", "浦发", "中信", "民生", "光大"];
+      const ALL_CITIES = ["上海", "北京", "深圳", "广州", "杭州", "成都", "南京", "武汉"];
+
+      // EMBEDDED_FALLBACK_START
+      const FALLBACK_ACTIVE = {"updated_at": "2026-11-22 16:41 CST", "count": 13, "deals": [{"id": "deal-429121bd21", "tier": "S", "score": 90, "score_reasons": ["大额收益(约150元)+38", "T1官方直出+28", "命中关注城市(上海)+8"], "trust_tier": "T1", "verified_sources": ["解放日报·上观新闻"], "promo_warning": false, "matched_tags": ["上海"], "category": "本地生活", "title": "上海静安文旅消费券（酒店/文创展演）", "benefit": "酒店满 500 减 100 / 满 800 减 150；文创展演满 100 减 30 / 满 200 减 60", "steps": "支付宝搜「乐游静安」，11 月 23 日起每周一上午 10:00 开抢（首期有效期至 11 月 29 日），酒店券和文创券各限核销 1 次，覆盖合作酒店、影院、剧场与书店。", "added_date": "2026-11-22", "deadline": "2026-11-29", "source_name": "解放日报·上观新闻", "source_url": "https://www.jfdaily.com/sgh/detail?id=4098551"}, {"id": "deal-fe99dbbf6a", "tier": "S", "score": 82, "score_reasons": ["大额收益(约500元)+38", "T2社区/多源印证(1源)+22", "全国普适+6"], "trust_tier": "T2", "verified_sources": ["搜狐国补汇总"], "promo_warning": false, "matched_tags": [], "category": "电商补贴", "title": "2026第四批消费品以旧换新国补（家电/数码）", "benefit": "数码手机平板等最高补贴 500 元，家电大件结算直减", "steps": "京东 App 搜「国补960」「数码588」「家电588」或淘宝认准「国家补贴」标识结算立减；同一身份证家电/数码全年各限 1 次，各地资金池额度用完即止。", "added_date": "2026-11-22", "deadline": "2026-12-31", "source_name": "搜狐国补汇总", "source_url": "https://m.sohu.com/a/1104168106_120815119?scm=10001.325_13-325_13.0.0-0-0-0-0.5_1334"}, {"id": "deal-b59259ee92", "tier": "S", "score": 76, "score_reasons": ["大额收益(约60元)+38", "T2社区/多源印证(1源)+22"], "trust_tier": "T2", "verified_sources": ["什么值得买"], "promo_warning": false, "matched_tags": [], "category": "电商补贴", "title": "网易云联合年卡（买一得八）及主流影音会员低价", "benefit": "网易云 228 元得 8 项会员（含爱奇艺/京东 PLUS/B 站等）；QQ 音乐 99 元/年；芒果 TV 约 55.8 元/年", "steps": "网易云 App 会员中心直开联合年卡；QQ 音乐选年费+网银/财付通支付享 99 元（记得关自动续费）；官方手机号直充避免第三方封号风险。", "added_date": "2026-11-22", "deadline": "2026-12-31", "source_name": "什么值得买", "source_url": "https://post.smzdm.com/talk/p/avgrkep9/"}, {"id": "deal-e89464ce5d", "tier": "A", "score": 70, "score_reasons": ["中等收益(约20元)+22", "T2社区/多源印证(1源)+22", "命中常用卡(农行)+10"], "trust_tier": "T2", "verified_sources": ["什么值得买"], "promo_warning": false, "matched_tags": ["农业银行"], "category": "银行支付", "title": "农业银行生活缴费立减", "benefit": "水电燃气等日常缴费最高立减 20 元", "steps": "通过农业银行指定缴费渠道完成日常水电燃气缴费即可参与满减优惠。", "added_date": "2026-11-22", "deadline": "2026-11-30", "source_name": "什么值得买", "source_url": "https://www.smzdm.com/p/185999280/"}, {"id": "deal-df36a12467", "tier": "A", "score": 66, "score_reasons": ["中等收益(约12元)+22", "T1官方直出+28"], "trust_tier": "T1", "verified_sources": ["美团城市攻略宝"], "promo_warning": false, "matched_tags": [], "category": "本地生活", "title": "美团会员「惊喜多选 1」每周 0 元领饮品权益", "benefit": "每周 0 元任选 1 项权益（覆盖蜜雪/古茗/喜茶/瑞幸/星巴克等）", "steps": "美团 L3+ 会员在美团 App 搜索「惊喜多选1」进入会员 666 页面，每周五 0 点刷新权益池，直领类权益直接领。", "added_date": "2026-11-22", "deadline": "2026-12-31", "source_name": "美团城市攻略宝", "source_url": "https://source.meituan.com/meituan-member/surprise-pick-1"}, {"id": "deal-bbcc19b8ea", "tier": "A", "score": 64, "score_reasons": ["大额收益(约50元)+38", "满额门槛偏高-12", "T2社区/多源印证(1源)+22"], "trust_tier": "T2", "verified_sources": ["什么值得买"], "promo_warning": false, "matched_tags": [], "category": "银行支付", "title": "兴业银行淘天消费满减", "benefit": "淘宝 / 天猫满 5000 减 50 元", "steps": "在淘宝或天猫下单结算时选择兴业银行卡支付享满减，适合年底大额刚需购物。", "added_date": "2026-11-22", "deadline": "2026-11-30", "source_name": "什么值得买", "source_url": "https://www.smzdm.com/p/185999280/"}, {"id": "deal-5783db60ea", "tier": "A", "score": 60, "score_reasons": ["中等收益(约16元)+22", "T3单源线报+12", "命中常用卡(工行)+10"], "trust_tier": "T3", "verified_sources": ["赚吧线报"], "promo_warning": false, "matched_tags": ["工商银行"], "category": "银行支付", "title": "工商银行小雪节气领 i 豆（保底 1650+ 豆）", "benefit": "小雪问答(200–2026豆) + 小雪映冬色(300豆) + 节气典藏(1000豆) + 消费季(100豆)", "steps": "工行 App 首页顶部进入「小雪」节气活动完成问答与打卡，再搜索「工行消费季」领 100 豆，i 豆可兑换微信立减金或京东 E 卡。", "added_date": "2026-11-22", "deadline": "2026-11-24", "source_name": "赚吧线报", "source_url": "https://www.hxm5.com/xianbao/5/"}, {"id": "deal-34bb3bc552", "tier": "B", "score": 50, "score_reasons": ["中等收益(约12元)+22", "T3单源线报+12"], "trust_tier": "T3", "verified_sources": ["赚吧线报"], "promo_warning": false, "matched_tags": [], "category": "本地生活", "title": "平安好车主免费领 6 瓶百岁山（今日线报）", "benefit": "0 元领取 6 瓶百岁山矿泉水", "steps": "打开平安好车主 App，首页定位切换为「佛山」后进入家庭权益活动扫码领取。实时线报名额随时可能结束，手快有。", "added_date": "2026-11-22", "deadline": "2026-11-23", "source_name": "赚吧线报", "source_url": "https://www.hxm5.com/xianbao/5/"}, {"id": "deal-f61f8dc39a", "tier": "B", "score": 50, "score_reasons": ["小额顺手(约6元)+12", "T3单源线报+12", "命中常用卡(建行)+10"], "trust_tier": "T3", "verified_sources": ["赚吧线报"], "promo_warning": false, "matched_tags": ["建设银行"], "category": "银行支付", "title": "云闪付生活缴费·建行裕农通信用卡满 4 随机立减", "benefit": "实测缴费 10 元两次均立减 6 元以上", "steps": "在云闪付 App「生活缴费」使用建行裕农通信用卡付款满 4 元触发随机立减（具体卡片是否受邀以实测为准）。", "added_date": "2026-11-22", "deadline": "2026-11-30", "source_name": "赚吧线报", "source_url": "https://www.hxm5.com/xianbao/5/"}, {"id": "deal-b884960cc2", "tier": "B", "score": 48, "score_reasons": ["小额顺手(约3元)+12", "满额门槛偏高-12", "T3单源线报+12", "命中常用卡(建行)+10"], "trust_tier": "T3", "verified_sources": ["赚吧线报"], "promo_warning": false, "matched_tags": ["建设银行"], "category": "银行支付", "title": "支付宝还中信信用卡立减 + 建行支付达标抽立减金", "benefit": "支付宝还中信满 1000 减 3/减 2 各一次；建行抽 2–8 元立减金", "steps": "支付宝信用卡还款选中信卡立减；建行 App 搜索「支付达标」查看可抽次数。", "added_date": "2026-11-22", "deadline": "2026-11-30", "source_name": "赚吧线报", "source_url": "https://www.hxm5.com/xianbao/5/"}, {"id": "deal-295e21c305", "tier": "B", "score": 47, "score_reasons": ["收益偏低/未明示+5", "T2社区/多源印证(1源)+22", "命中常用卡(建行)+10", "有前置门槛-6"], "trust_tier": "T2", "verified_sources": ["搜狐银行线报"], "promo_warning": false, "matched_tags": ["建设银行"], "category": "银行支付", "title": "建行龙卡正青春卡云闪付随机立减", "benefit": "云闪付消费满 20 元随机立减", "steps": "需持有建设银行龙卡正青春卡，日常消费通过云闪付付款即可触发随机立减。", "added_date": "2026-11-22", "deadline": "2026-12-31", "source_name": "搜狐银行线报", "source_url": "https://www.sohu.com/a/1087909776_120967551"}, {"id": "deal-cf0bc122fa", "tier": "B", "score": 43, "score_reasons": ["收益偏低/未明示+5", "T2社区/多源印证(1源)+22"], "trust_tier": "T2", "verified_sources": ["什么值得买"], "promo_warning": false, "matched_tags": [], "category": "本地生活", "title": "库迪咖啡果饮系列 4 选 1 特价", "benefit": "团购好价 7.9 元喝库迪果饮", "steps": "通过美团渠道购买库迪果饮 4 选 1 券，到店核销使用。", "added_date": "2026-11-22", "deadline": "2026-11-30", "source_name": "什么值得买", "source_url": "https://www.smzdm.com/p/186265668/"}, {"id": "deal-3d9227441b", "tier": "B", "score": 40, "score_reasons": ["小额顺手(约5元)+12", "T3单源线报+12"], "trust_tier": "T3", "verified_sources": ["赚吧线报"], "promo_warning": false, "matched_tags": [], "category": "本地生活", "title": "中国电信会员日（1 积分兑 / 话费券放水）", "benefit": "1 积分兑换权益，话费满 5 减 5 / 200 积分福利", "steps": "中国电信 App 搜索「会员日」进入参与，限中国电信手机号用户，名额分批释放。", "added_date": "2026-11-22", "deadline": "2026-11-23", "source_name": "赚吧线报", "source_url": "https://www.hxm5.com/xianbao/5/"}]};
+      // EMBEDDED_FALLBACK_END
+
+      function loadPrefs() {
+        try {
+          const raw = localStorage.getItem(PREF_KEY);
+          if (raw) return JSON.parse(raw);
+        } catch (_) {}
+        return {
+          claimedIds: [],
+          deadIds: [],
+          customDeals: [],
+          myBanks: ["工行", "建行", "农行", "中行", "招行"],
+          myCities: ["上海", "北京", "深圳", "广州", "杭州"]
+        };
+      }
+
+      function savePrefs() {
+        try {
+          localStorage.setItem(PREF_KEY, JSON.stringify(state.prefs));
+        } catch (_) {}
+      }
+
+      function loadLastSeen() {
+        try {
+          return localStorage.getItem(LAST_SEEN_KEY) || "";
+        } catch (_) {
+          return "";
+        }
+      }
+
+      function markSeenToday() {
+        try {
+          const today = new Date().toISOString().slice(0, 10);
+          localStorage.setItem(LAST_SEEN_KEY, today);
+        } catch (_) {}
+      }
+
+      const state = {
+        prefs: loadPrefs(),
+        lastSeenDate: loadLastSeen(),
+        remoteDeals: [],
+        remoteArchive: [],
+        updatedAt: FALLBACK_ACTIVE.updated_at || "2026-11-22",
+        activeTab: "active",
+        tierFilter: "ALL",
+        catFilter: "ALL",
+        verifiedOnly: false,
+        profileOnly: false,
+        hideClaimed: false,
+        searchQuery: "",
+        sortBy: "score"
+      };
+
+      let toastTimer = null;
+      function showToast(msg) {
+        const el = document.getElementById("toast");
+        el.textContent = msg;
+        el.classList.remove("opacity-0");
+        el.classList.add("opacity-100");
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          el.classList.remove("opacity-100");
+          el.classList.add("opacity-0");
+        }, 2000);
+      }
+
+      function escapeHtml(s) {
+        return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+      }
+
+      function getDaysRemaining(dl) {
+        if (!dl) return null;
+        const p = dl.split("-").map(Number);
+        if (p.length !== 3 || p.some(isNaN)) return null;
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        const target = new Date(p[0], p[1] - 1, p[2]).getTime();
+        return Math.round((target - today) / 86400000);
+      }
+
+      function isExpired(d) {
+        const days = getDaysRemaining(d.deadline);
+        return days !== null && days < 0;
+      }
+
+      function isUrgent(d) {
+        const days = getDaysRemaining(d.deadline);
+        return days !== null && days >= 0 && days <= 2;
+      }
+
+      function matchesUserProfile(deal) {
+        const text = `${deal.title} ${deal.benefit} ${deal.steps}`;
+        const mentionsBank = ALL_BANKS.filter((b) => text.includes(b));
+        const mentionsCity = ALL_CITIES.filter((c) => text.includes(c));
+        const bankOk = mentionsBank.length === 0 || mentionsBank.some((b) => state.prefs.myBanks.includes(b));
+        const cityOk = mentionsCity.length === 0 || mentionsCity.some((c) => state.prefs.myCities.includes(c));
+        return bankOk && cityOk;
+      }
+
+      function trustBadge(tier) {
+        if (tier === "T1") return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">T1 官方</span>`;
+        if (tier === "T2") return `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">T2 社区</span>`;
+        return `<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-slate-200 text-slate-700">T3 单源/易黄</span>`;
+      }
+
+      function tierMeta(tier) {
+        if (tier === "S") return { label: "S级", badge: "bg-rose-600 text-white", border: "border-l-4 border-l-rose-500", box: "bg-rose-50/80 text-rose-900 border-rose-200/70" };
+        if (tier === "A") return { label: "A级", badge: "bg-amber-500 text-white", border: "border-l-4 border-l-amber-400", box: "bg-amber-50/80 text-amber-950 border-amber-200/70" };
+        return { label: "B级", badge: "bg-sky-600 text-white", border: "border-l-4 border-l-sky-500", box: "bg-sky-50/80 text-sky-950 border-sky-200/70" };
+      }
+
+      function deadlinePill(d) {
+        const days = getDaysRemaining(d.deadline);
+        if (days === null) return `<span class="px-2 py-0.5 rounded text-[11px] bg-slate-100 text-slate-600">长期</span>`;
+        if (days < 0) return `<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-slate-200 text-slate-600">已过期</span>`;
+        if (days <= 2) return `<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-100 text-amber-800">48h内截止</span>`;
+        return `<span class="px-2 py-0.5 rounded text-[11px] bg-emerald-50 text-emerald-700">剩 ${days} 天</span>`;
+      }
+
+      function renderCard(d, inArchive) {
+        const meta = tierMeta(d.tier);
+        const claimed = state.prefs.claimedIds.includes(d.id);
+        const isNew = state.lastSeenDate && d.added_date && d.added_date > state.lastSeenDate;
+        const reasonsHtml = (d.score_reasons || []).slice(0, 3).map((r) => `<span class="px-1.5 py-0.5 rounded bg-slate-100 text-slate-500 text-[10px]">${escapeHtml(r)}</span>`).join("");
+        const promoWarn = d.promo_warning ? `<span class="px-1.5 py-0.5 rounded bg-orange-100 text-orange-800 text-[10px] font-semibold">含口令·以实领为准</span>` : "";
+        const newTag = isNew && !inArchive ? `<span class="px-1.5 py-0.5 rounded bg-rose-100 text-rose-700 text-[10px] font-bold">NEW</span>` : "";
+
+        const sourceLink = d.source_url
+          ? `<a href="${escapeHtml(d.source_url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-slate-100 hover:bg-slate-200 transition">${escapeHtml(d.source_name || "查看来源")} ↗</a>`
+          : "";
+
+        const actions = inArchive
+          ? `<button type="button" data-action="restore" data-id="${escapeHtml(d.id)}" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white">恢复到总榜</button>`
+          : `<button type="button" data-action="claim" data-id="${escapeHtml(d.id)}" class="px-2.5 py-1.5 rounded-lg text-xs font-semibold transition ${claimed ? "bg-emerald-600 text-white" : "bg-slate-900 text-white"}">${claimed ? "✓ 已薅" : "打卡已薅"}</button>
+             <button type="button" data-action="copy" data-id="${escapeHtml(d.id)}" class="px-2.5 py-1.5 rounded-lg text-xs font-medium bg-slate-100 text-slate-700">复制</button>
+             <button type="button" data-action="dead" data-id="${escapeHtml(d.id)}" class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-rose-600 hover:bg-rose-50">标黄</button>`;
+
+        return `
+          <article class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm flex flex-col justify-between gap-2.5 ${meta.border} ${claimed && !inArchive ? "opacity-65" : ""}">
+            <div class="space-y-2">
+              <div class="flex flex-wrap items-center justify-between gap-1.5">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="px-2 py-0.5 rounded-md text-[11px] font-bold ${meta.badge}">${meta.label} · ${d.score ?? 60}分</span>
+                  ${trustBadge(d.trust_tier)}
+                  ${newTag}
+                  ${promoWarn}
+                </div>
+                ${deadlinePill(d)}
+              </div>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 leading-snug break-words">${escapeHtml(d.title)}</h3>
+              <div class="rounded-xl px-3 py-2 border text-xs sm:text-sm font-semibold leading-snug ${meta.box}">${escapeHtml(d.benefit)}</div>
+              <p class="text-xs text-slate-600 leading-relaxed break-words">${escapeHtml(d.steps)}</p>
+              ${reasonsHtml ? `<div class="flex flex-wrap gap-1 pt-0.5">${reasonsHtml}</div>` : ""}
+            </div>
+            <div class="pt-2.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-1.5 flex-wrap">${actions}</div>
+              ${sourceLink}
+            </div>
+          </article>
+        `;
+      }
+
+      function getAllDeals() {
+        return [...state.prefs.customDeals, ...state.remoteDeals];
+      }
+
+      function render() {
+        const all = getAllDeals();
+        const activeAll = all.filter((d) => !state.prefs.deadIds.includes(d.id) && !isExpired(d));
+        const archiveAll = [...all.filter((d) => state.prefs.deadIds.includes(d.id) || isExpired(d)), ...state.remoteArchive];
+
+        document.getElementById("lastUpdatedBadge").textContent = `更新于 ${state.updatedAt}`;
+        document.getElementById("kpiActive").textContent = activeAll.length;
+        document.getElementById("kpiS").textContent = activeAll.filter((d) => d.tier === "S").length;
+        document.getElementById("kpiUrgent").textContent = activeAll.filter((d) => isUrgent(d)).length;
+        document.getElementById("kpiClaimed").textContent = activeAll.filter((d) => state.prefs.claimedIds.includes(d.id)).length;
+        document.getElementById("tabActiveBadge").textContent = activeAll.length;
+        document.getElementById("tabArchiveBadge").textContent = archiveAll.length;
+
+        const q = state.searchQuery.trim().toLowerCase();
+        let list = activeAll.filter((d) => {
+          if (state.tierFilter !== "ALL" && d.tier !== state.tierFilter) return false;
+          if (state.catFilter !== "ALL" && d.category !== state.catFilter) return false;
+          if (state.verifiedOnly && d.trust_tier === "T3") return false;
+          if (state.profileOnly && !matchesUserProfile(d)) return false;
+          if (state.hideClaimed && state.prefs.claimedIds.includes(d.id)) return false;
+          if (q && !`${d.title} ${d.benefit} ${d.steps} ${d.category}`.toLowerCase().includes(q)) return false;
+          return true;
+        });
+
+        const tRank = { S: 0, A: 1, B: 2 };
+        list.sort((a, b) => {
+          if (state.sortBy === "deadline") return (a.deadline || "9999-12-31").localeCompare(b.deadline || "9999-12-31");
+          if (state.sortBy === "newest") return (b.added_date || "").localeCompare(a.added_date || "");
+          const tr = (tRank[a.tier] ?? 9) - (tRank[b.tier] ?? 9);
+          if (tr !== 0) return tr;
+          return (b.score || 0) - (a.score || 0);
+        });
+
+        const activeEl = document.getElementById("activeCards");
+        const activeEmpty = document.getElementById("activeEmpty");
+        activeEl.innerHTML = list.map((d) => renderCard(d, false)).join("");
+        activeEmpty.classList.toggle("hidden", list.length > 0);
+
+        const archEl = document.getElementById("archiveCards");
+        const archEmpty = document.getElementById("archiveEmpty");
+        archEl.innerHTML = archiveAll.map((d) => renderCard(d, true)).join("");
+        archEmpty.classList.toggle("hidden", archiveAll.length > 0);
+
+        document.getElementById("viewActive").classList.toggle("hidden", state.activeTab !== "active");
+        document.getElementById("viewRules").classList.toggle("hidden", state.activeTab !== "rules");
+        document.getElementById("viewArchive").classList.toggle("hidden", state.activeTab !== "archive");
+
+        document.querySelectorAll(".tab-btn").forEach((btn) => {
+          const cur = btn.dataset.tab === state.activeTab;
+          btn.classList.toggle("bg-white", cur);
+          btn.classList.toggle("text-slate-900", cur);
+          btn.classList.toggle("shadow-sm", cur);
+          btn.classList.toggle("font-semibold", cur);
+          btn.classList.toggle("text-slate-600", !cur);
+        });
+
+        document.querySelectorAll(".tier-filter").forEach((btn) => {
+          const on = btn.dataset.tier === state.tierFilter;
+          btn.classList.toggle("ring-2", on);
+          btn.classList.toggle("ring-slate-900", on);
+        });
+
+        document.querySelectorAll(".cat-filter").forEach((btn) => {
+          const on = btn.dataset.cat === state.catFilter;
+          btn.classList.toggle("bg-slate-900", on);
+          btn.classList.toggle("text-white", on);
+          btn.classList.toggle("bg-slate-100", !on);
+          btn.classList.toggle("text-slate-600", !on);
+        });
+
+        const vBtn = document.getElementById("verifiedOnlyBtn");
+        vBtn.classList.toggle("bg-emerald-600", state.verifiedOnly);
+        vBtn.classList.toggle("text-white", state.verifiedOnly);
+        vBtn.classList.toggle("bg-emerald-50", !state.verifiedOnly);
+        vBtn.classList.toggle("text-emerald-700", !state.verifiedOnly);
+      }
+
+      function renderProfilePills() {
+        document.getElementById("bankCheckboxes").innerHTML = ALL_BANKS.map((b) => {
+          const on = state.prefs.myBanks.includes(b);
+          return `<button type="button" data-bank="${b}" class="profile-pill px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition ${on ? "bg-slate-900 text-white border-slate-900" : "bg-slate-50 text-slate-600 border-slate-200"}">${b}</button>`;
+        }).join("");
+        document.getElementById("cityCheckboxes").innerHTML = ALL_CITIES.map((c) => {
+          const on = state.prefs.myCities.includes(c);
+          return `<button type="button" data-city="${c}" class="profile-pill px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition ${on ? "bg-slate-900 text-white border-slate-900" : "bg-slate-50 text-slate-600 border-slate-200"}">${c}</button>`;
+        }).join("");
+      }
+
+      function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => showToast("已复制活动要点"), () => fallbackCopy(text));
+        } else {
+          fallbackCopy(text);
+        }
+      }
+
+      function fallbackCopy(text) {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand("copy"); showToast("已复制活动要点"); } catch (_) { showToast("复制失败"); }
+        document.body.removeChild(ta);
+      }
+
+      // Event bindings
+      document.querySelectorAll(".tab-btn").forEach((b) => b.addEventListener("click", () => { state.activeTab = b.dataset.tab; render(); }));
+      document.querySelectorAll(".tier-filter").forEach((b) => b.addEventListener("click", () => { state.tierFilter = b.dataset.tier; render(); }));
+      document.querySelectorAll(".cat-filter").forEach((b) => b.addEventListener("click", () => { state.catFilter = b.dataset.cat; render(); }));
+      document.getElementById("verifiedOnlyBtn").addEventListener("click", () => { state.verifiedOnly = !state.verifiedOnly; render(); });
+      document.getElementById("searchInput").addEventListener("input", (e) => { state.searchQuery = e.target.value; render(); });
+      document.getElementById("sortSelect").addEventListener("change", (e) => { state.sortBy = e.target.value; render(); });
+      document.getElementById("profileOnlyToggle").addEventListener("change", (e) => { state.profileOnly = e.target.checked; render(); });
+      document.getElementById("hideClaimedToggle").addEventListener("change", (e) => { state.hideClaimed = e.target.checked; render(); });
+
+      function handleCardClick(e) {
+        const btn = e.target.closest("button[data-action]");
+        if (!btn) return;
+        const { action, id } = btn.dataset;
+        const deal = getAllDeals().find((x) => x.id === id);
+        if (action === "claim") {
+          const i = state.prefs.claimedIds.indexOf(id);
+          if (i >= 0) state.prefs.claimedIds.splice(i, 1); else state.prefs.claimedIds.push(id);
+          savePrefs(); render(); showToast(i >= 0 ? "已取消打卡" : "已打卡标记为已薅");
+        } else if (action === "dead") {
+          if (!state.prefs.deadIds.includes(id)) state.prefs.deadIds.push(id);
+          savePrefs(); render(); showToast("已标黄并移入历史归档");
+        } else if (action === "restore") {
+          state.prefs.deadIds = state.prefs.deadIds.filter((x) => x !== id);
+          savePrefs(); render(); showToast("已恢复到可薅总榜");
+        } else if (action === "copy" && deal) {
+          copyText(`【${deal.tier}级·${deal.score}分】${deal.title}\n福利：${deal.benefit}\n参与：${deal.steps}\n截止：${deal.deadline}`);
+        }
+      }
+      document.getElementById("activeCards").addEventListener("click", handleCardClick);
+      document.getElementById("archiveCards").addEventListener("click", handleCardClick);
+
+      // Profile modal
+      const profileModal = document.getElementById("profileModal");
+      document.getElementById("openProfileBtn").addEventListener("click", () => {
+        renderProfilePills();
+        profileModal.classList.remove("hidden");
+        profileModal.classList.add("flex");
+      });
+      function closeProfile() { profileModal.classList.add("hidden"); profileModal.classList.remove("flex"); }
+      document.getElementById("closeProfileBtn").addEventListener("click", closeProfile);
+      document.getElementById("saveProfileBtn").addEventListener("click", () => { savePrefs(); closeProfile(); render(); showToast("已保存我的卡包与城市"); });
+      profileModal.addEventListener("click", (e) => {
+        if (e.target === profileModal) closeProfile();
+        const pill = e.target.closest(".profile-pill");
+        if (!pill) return;
+        if (pill.dataset.bank) {
+          const b = pill.dataset.bank;
+          const idx = state.prefs.myBanks.indexOf(b);
+          if (idx >= 0) state.prefs.myBanks.splice(idx, 1); else state.prefs.myBanks.push(b);
+          renderProfilePills();
+        } else if (pill.dataset.city) {
+          const c = pill.dataset.city;
+          const idx = state.prefs.myCities.indexOf(c);
+          if (idx >= 0) state.prefs.myCities.splice(idx, 1); else state.prefs.myCities.push(c);
+          renderProfilePills();
+        }
+      });
+
+      // Add modal
+      const addModal = document.getElementById("addModal");
+      document.getElementById("openAddModalBtn").addEventListener("click", () => {
+        const d = new Date(); d.setDate(d.getDate() + 7);
+        document.getElementById("inputDeadline").value = d.toISOString().slice(0, 10);
+        addModal.classList.remove("hidden"); addModal.classList.add("flex");
+      });
+      function closeAdd() { addModal.classList.add("hidden"); addModal.classList.remove("flex"); }
+      document.getElementById("closeAddModalBtn").addEventListener("click", closeAdd);
+      document.getElementById("cancelAddBtn").addEventListener("click", closeAdd);
+      addModal.addEventListener("click", (e) => { if (e.target === addModal) closeAdd(); });
+      document.getElementById("addDealForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const tier = document.getElementById("inputTier").value;
+        state.prefs.customDeals.unshift({
+          id: "custom-" + Date.now(),
+          tier,
+          score: tier === "S" ? 85 : tier === "A" ? 65 : 45,
+          score_reasons: ["手动录入"],
+          trust_tier: "T2",
+          category: document.getElementById("inputCategory").value,
+          title: document.getElementById("inputTitle").value.trim(),
+          benefit: document.getElementById("inputBenefit").value.trim(),
+          steps: document.getElementById("inputSteps").value.trim(),
+          added_date: new Date().toISOString().slice(0, 10),
+          deadline: document.getElementById("inputDeadline").value,
+          source_name: "手动来源",
+          source_url: document.getElementById("inputUrl").value.trim()
+        });
+        savePrefs(); e.target.reset(); closeAdd(); state.activeTab = "active"; render(); showToast("已添加到可薅总榜");
+      });
+
+      document.getElementById("resetDataBtn").addEventListener("click", () => {
+        state.prefs.claimedIds = []; state.prefs.deadIds = []; state.prefs.customDeals = [];
+        savePrefs(); render(); showToast("已重置本地打卡与标黄状态");
+      });
+
+      async function boot() {
+        // Load embedded fallback first so UI is never empty
+        state.remoteDeals = (FALLBACK_ACTIVE.deals || []).slice();
+        state.updatedAt = FALLBACK_ACTIVE.updated_at || state.updatedAt;
+        render();
+
+        // Try live JSON fetch when hosted on GitHub Pages / Cloudflare Pages
+        try {
+          const [actRes, archRes, stRes] = await Promise.all([
+            fetch("./data/active.json", { cache: "no-store" }),
+            fetch("./data/archive.json", { cache: "no-store" }).catch(() => null),
+            fetch("./data/status.json", { cache: "no-store" }).catch(() => null)
+          ]);
+          if (actRes && actRes.ok) {
+            const actJson = await actRes.json();
+            if (Array.isArray(actJson.deals)) {
+              state.remoteDeals = actJson.deals;
+              state.updatedAt = actJson.updated_at || state.updatedAt;
+            }
+          }
+          if (archRes && archRes.ok) {
+            const archJson = await archRes.json();
+            if (Array.isArray(archJson.deals)) state.remoteArchive = archJson.deals;
+          }
+          if (stRes && stRes.ok) {
+            const stJson = await stRes.json();
+            if (Array.isArray(stJson.sources) && stJson.sources.length > 0) {
+              const okCount = stJson.sources.filter((s) => s.status === "ok" || s.status === "cached").length;
+              document.getElementById("healthSummary").textContent = `信源健康 ${okCount}/${stJson.sources.length} · 09:15 / 13:45 / 20:15 自动刷新`;
+            }
+          }
+          render();
+        } catch (_) {
+          // Preview/offline mode uses embedded snapshot seamlessly
+        }
+        markSeenToday();
+      }
+
+      boot();
+    })();
+  </script>
+</body>
+</html>
