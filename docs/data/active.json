@@ -1,24 +1,21 @@
 {
-  "updated_at": "2026-11-22 23:57 CST",
+  "updated_at": "2026-11-23 00:32 CST",
   "count": 25,
   "deals": [
     {
       "id": "deal-429121bd21",
       "tier": "S",
-      "score": 90,
+      "score": 82,
       "score_reasons": [
         "大额收益(约150元)+38",
-        "T1官方直出+28",
-        "命中关注城市(上海)+8"
+        "T1官方直出+28"
       ],
       "trust_tier": "T1",
       "verified_sources": [
         "解放日报·上观新闻"
       ],
       "promo_warning": false,
-      "matched_tags": [
-        "上海"
-      ],
+      "matched_tags": [],
       "category": "本地生活",
       "title": "上海静安文旅消费券（酒店/文创展演）",
       "benefit": "酒店满 500 减 100 / 满 800 减 150；文创展演满 100 减 30 / 满 200 减 60",
@@ -149,32 +146,6 @@
       "source_url": "https://www.smzdm.com/p/185999280/"
     },
     {
-      "id": "deal-5783db60ea",
-      "tier": "A",
-      "score": 60,
-      "score_reasons": [
-        "中等收益(约16元)+22",
-        "T3单源线报+12",
-        "命中常用卡(工行)+10"
-      ],
-      "trust_tier": "T3",
-      "verified_sources": [
-        "赚吧线报"
-      ],
-      "promo_warning": false,
-      "matched_tags": [
-        "工商银行"
-      ],
-      "category": "银行支付",
-      "title": "工商银行小雪节气领 i 豆（保底 1650+ 豆）",
-      "benefit": "小雪问答(200–2026豆) + 小雪映冬色(300豆) + 节气典藏(1000豆) + 消费季(100豆)",
-      "steps": "工行 App 首页顶部进入「小雪」节气活动完成问答与打卡，再搜索「工行消费季」领 100 豆，i 豆可兑换微信立减金或京东 E 卡。",
-      "added_date": "2026-11-22",
-      "deadline": "2026-11-24",
-      "source_name": "赚吧线报",
-      "source_url": "https://www.hxm5.com/xianbao/5/"
-    },
-    {
       "id": "deal-34bb3bc552",
       "tier": "B",
       "score": 50,
@@ -198,84 +169,27 @@
       "source_url": "https://www.hxm5.com/xianbao/5/"
     },
     {
-      "id": "deal-f61f8dc39a",
+      "id": "deal-5783db60ea",
       "tier": "B",
       "score": 50,
       "score_reasons": [
-        "小额顺手(约6元)+12",
-        "T3单源线报+12",
-        "命中常用卡(建行)+10"
+        "中等收益(约16元)+22",
+        "T3单源线报+12"
       ],
       "trust_tier": "T3",
       "verified_sources": [
         "赚吧线报"
       ],
       "promo_warning": false,
-      "matched_tags": [
-        "建设银行"
-      ],
+      "matched_tags": [],
       "category": "银行支付",
-      "title": "云闪付生活缴费·建行裕农通信用卡满 4 随机立减",
-      "benefit": "实测缴费 10 元两次均立减 6 元以上",
-      "steps": "在云闪付 App「生活缴费」使用建行裕农通信用卡付款满 4 元触发随机立减（具体卡片是否受邀以实测为准）。",
+      "title": "工商银行小雪节气领 i 豆（保底 1650+ 豆）",
+      "benefit": "小雪问答(200–2026豆) + 小雪映冬色(300豆) + 节气典藏(1000豆) + 消费季(100豆)",
+      "steps": "工行 App 首页顶部进入「小雪」节气活动完成问答与打卡，再搜索「工行消费季」领 100 豆，i 豆可兑换微信立减金或京东 E 卡。",
       "added_date": "2026-11-22",
-      "deadline": "2026-11-30",
+      "deadline": "2026-11-24",
       "source_name": "赚吧线报",
       "source_url": "https://www.hxm5.com/xianbao/5/"
-    },
-    {
-      "id": "deal-b884960cc2",
-      "tier": "B",
-      "score": 48,
-      "score_reasons": [
-        "小额顺手(约3元)+12",
-        "满额门槛偏高-12",
-        "T3单源线报+12",
-        "命中常用卡(建行)+10"
-      ],
-      "trust_tier": "T3",
-      "verified_sources": [
-        "赚吧线报"
-      ],
-      "promo_warning": false,
-      "matched_tags": [
-        "建设银行"
-      ],
-      "category": "银行支付",
-      "title": "支付宝还中信信用卡立减 + 建行支付达标抽立减金",
-      "benefit": "支付宝还中信满 1000 减 3/减 2 各一次；建行抽 2–8 元立减金",
-      "steps": "支付宝信用卡还款选中信卡立减；建行 App 搜索「支付达标」查看可抽次数。",
-      "added_date": "2026-11-22",
-      "deadline": "2026-11-30",
-      "source_name": "赚吧线报",
-      "source_url": "https://www.hxm5.com/xianbao/5/"
-    },
-    {
-      "id": "deal-295e21c305",
-      "tier": "B",
-      "score": 47,
-      "score_reasons": [
-        "收益偏低/未明示+5",
-        "T2社区/多源印证(1源)+22",
-        "命中常用卡(建行)+10",
-        "有前置门槛-6"
-      ],
-      "trust_tier": "T2",
-      "verified_sources": [
-        "搜狐银行线报"
-      ],
-      "promo_warning": false,
-      "matched_tags": [
-        "建设银行"
-      ],
-      "category": "银行支付",
-      "title": "建行龙卡正青春卡云闪付随机立减",
-      "benefit": "云闪付消费满 20 元随机立减",
-      "steps": "需持有建设银行龙卡正青春卡，日常消费通过云闪付付款即可触发随机立减。",
-      "added_date": "2026-11-22",
-      "deadline": "2026-12-31",
-      "source_name": "搜狐银行线报",
-      "source_url": "https://www.sohu.com/a/1087909776_120967551"
     },
     {
       "id": "deal-bb73a29d88",
@@ -598,6 +512,77 @@
       "deadline": "2026-11-23",
       "source_name": "赚吧线报",
       "source_url": "https://www.hxm5.com/xianbao/5/"
+    },
+    {
+      "id": "deal-f61f8dc39a",
+      "tier": "B",
+      "score": 40,
+      "score_reasons": [
+        "小额顺手(约6元)+12",
+        "T3单源线报+12"
+      ],
+      "trust_tier": "T3",
+      "verified_sources": [
+        "赚吧线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "银行支付",
+      "title": "云闪付生活缴费·建行裕农通信用卡满 4 随机立减",
+      "benefit": "实测缴费 10 元两次均立减 6 元以上",
+      "steps": "在云闪付 App「生活缴费」使用建行裕农通信用卡付款满 4 元触发随机立减（具体卡片是否受邀以实测为准）。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-30",
+      "source_name": "赚吧线报",
+      "source_url": "https://www.hxm5.com/xianbao/5/"
+    },
+    {
+      "id": "deal-b884960cc2",
+      "tier": "B",
+      "score": 38,
+      "score_reasons": [
+        "小额顺手(约3元)+12",
+        "满额门槛偏高-12",
+        "T3单源线报+12"
+      ],
+      "trust_tier": "T3",
+      "verified_sources": [
+        "赚吧线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "银行支付",
+      "title": "支付宝还中信信用卡立减 + 建行支付达标抽立减金",
+      "benefit": "支付宝还中信满 1000 减 3/减 2 各一次；建行抽 2–8 元立减金",
+      "steps": "支付宝信用卡还款选中信卡立减；建行 App 搜索「支付达标」查看可抽次数。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-30",
+      "source_name": "赚吧线报",
+      "source_url": "https://www.hxm5.com/xianbao/5/"
+    },
+    {
+      "id": "deal-295e21c305",
+      "tier": "B",
+      "score": 37,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22",
+        "有前置门槛-6"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "搜狐银行线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "银行支付",
+      "title": "建行龙卡正青春卡云闪付随机立减",
+      "benefit": "云闪付消费满 20 元随机立减",
+      "steps": "需持有建设银行龙卡正青春卡，日常消费通过云闪付付款即可触发随机立减。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-12-31",
+      "source_name": "搜狐银行线报",
+      "source_url": "https://www.sohu.com/a/1087909776_120967551"
     }
   ]
 }
