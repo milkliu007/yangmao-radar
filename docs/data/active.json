@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-22 16:41 CST",
-  "count": 13,
+  "updated_at": "2026-11-22 23:57 CST",
+  "count": 25,
   "deals": [
     {
       "id": "deal-429121bd21",
@@ -276,6 +276,282 @@
       "deadline": "2026-12-31",
       "source_name": "搜狐银行线报",
       "source_url": "https://www.sohu.com/a/1087909776_120967551"
+    },
+    {
+      "id": "deal-bb73a29d88",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "好丽友 好友趣 薯片 多汁牛排味 70g - 3元（需买10件，需用券）",
+      "benefit": "好丽友 好友趣 薯片 多汁牛排味 70g - 3元（需买10件，需用券）",
+      "steps": "3元（需买10件，需用券）",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186585657/"
+    },
+    {
+      "id": "deal-e11e831130",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "THERMOS 膳魔师 316L不锈钢 吸管杯 粉蓝双盖 320ml 儿童保温杯 - 89元（需用券）",
+      "benefit": "THERMOS 膳魔师 316L不锈钢 吸管杯 粉蓝双盖 320ml 儿童保温杯 - 89元（需用券",
+      "steps": "89元（需用券）",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186585892/"
+    },
+    {
+      "id": "deal-f6240959b2",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "2代升级版Pro深睡控温被芯子200*230cm(8斤) - 159元",
+      "benefit": "2代升级版Pro深睡控温被芯子200*230cm(8斤) - 159元",
+      "steps": "159元",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186585649/"
+    },
+    {
+      "id": "deal-31266e23cf",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "三枪 100%新疆纯棉加厚 半高领保暖内衣 抗静电 2件装 男女同款 - 59元（需用券）",
+      "benefit": "三枪 100%新疆纯棉加厚 半高领保暖内衣 抗静电 2件装 男女同款 - 59元（需用券）",
+      "steps": "59元（需用券）",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186586285/"
+    },
+    {
+      "id": "deal-3e53bf70e2",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "杨大爷 四川烟熏腊肠农家风味腊味肉只麻不辣麻香正宗藤椒青花椒香肠200g - 3.89元",
+      "benefit": "杨大爷 四川烟熏腊肠农家风味腊味肉只麻不辣麻香正宗藤椒青花椒香肠200g - 3.89元",
+      "steps": "3.89元",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186586390/"
+    },
+    {
+      "id": "deal-a4f6a5f249",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "BROOKS 男女透气轻薄百搭简约舒适短袖跑步运动上衣T恤 黑 M - 87元",
+      "benefit": "BROOKS 男女透气轻薄百搭简约舒适短袖跑步运动上衣T恤 黑 M - 87元",
+      "steps": "87元",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186585786/"
+    },
+    {
+      "id": "deal-839767b283",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "卤冠 麻辣味手撕兔100g - 5.6元（需用券）",
+      "benefit": "卤冠 麻辣味手撕兔100g - 5.6元（需用券）",
+      "steps": "5.6元（需用券）",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186585417/"
+    },
+    {
+      "id": "deal-4445b16ab2",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "MIDO HOUSE 铭都纯棉贡缎枕套A类可水洗枕头套枕芯套四季枕套 纯色单只 款单只装 - 9.9元",
+      "benefit": "MIDO HOUSE 铭都纯棉贡缎枕套A类可水洗枕头套枕芯套四季枕套 纯色单只 款单只装 - 9.9",
+      "steps": "9.9元",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186585264/"
+    },
+    {
+      "id": "deal-8c71b2abed",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "奥迪双钻 经典战斗王陀螺盲盒第二弹飓风战魂对战竞技儿童玩具 - 5元",
+      "benefit": "奥迪双钻 经典战斗王陀螺盲盒第二弹飓风战魂对战竞技儿童玩具 - 5元",
+      "steps": "5元",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186586430/"
+    },
+    {
+      "id": "deal-c5adb40504",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "国家补贴：九阳 P688 破壁机 家用全自动 1.5L 高温清洗 可预约 柔音 细腻 免滤 奶油白 - 200.42元",
+      "benefit": "国家补贴：九阳 P688 破壁机 家用全自动 1.5L 高温清洗 可预约 柔音 细腻 免滤 奶油白 ",
+      "steps": "200.42元",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186586069/"
+    },
+    {
+      "id": "deal-7de947ab11",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "电商补贴",
+      "title": "京东京造 欧姆系列 高档头层牛皮沙发 双电动零重力款 2.4米 黑色 - 3468.01元",
+      "benefit": "京东京造 欧姆系列 高档头层牛皮沙发 双电动零重力款 2.4米 黑色 - 3468.01元",
+      "steps": "3468.01元",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186586278/"
+    },
+    {
+      "id": "deal-808291ef91",
+      "tier": "B",
+      "score": 43,
+      "score_reasons": [
+        "收益偏低/未明示+5",
+        "T2社区/多源印证(1源)+22"
+      ],
+      "trust_tier": "T2",
+      "verified_sources": [
+        "什么值得买·精选好价"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "本地生活",
+      "title": "百亿补贴：酷态科 电能块自带线20000mAh移动电源PD快充55W充电宝旅行 - 97.1元",
+      "benefit": "百亿补贴：酷态科 电能块自带线20000mAh移动电源PD快充55W充电宝旅行 - 97.1元",
+      "steps": "97.1元",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-29",
+      "source_name": "什么值得买·精选好价",
+      "source_url": "https://www.smzdm.com/p/186586093/"
     },
     {
       "id": "deal-cf0bc122fa",

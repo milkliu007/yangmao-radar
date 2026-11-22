@@ -1,0 +1,26 @@
+{
+  "smzdm-youhui": {
+    "failures": 0,
+    "cooldown_until": 0,
+    "etag": "\"e08-aoDcMg5OerZTiuVm3zskF0AcahM\"",
+    "last_modified": "Sun, 22 Nov 2026 15:57:18 GMT"
+  },
+  "smzdm-bank": {
+    "failures": 1,
+    "cooldown_until": 0,
+    "etag": "",
+    "last_modified": ""
+  },
+  "smzdm-life": {
+    "failures": 1,
+    "cooldown_until": 0,
+    "etag": "",
+    "last_modified": ""
+  },
+  "xianbao-zhuanba": {
+    "failures": 0,
+    "cooldown_until": 0,
+    "etag": "",
+    "last_modified": ""
+  }
+}
