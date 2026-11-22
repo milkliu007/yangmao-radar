@@ -1,8 +1,8 @@
 {
   "schedule_note": "北京时间每日 09:15、13:45、20:15 三次黄金窗口执行，配合随机抖动与 ETag 缓存降低风控风险",
   "user_profile": {
-    "my_banks": ["招商银行", "工商银行", "建设银行", "农业银行", "中国银行"],
-    "my_cities": ["全国", "上海", "北京", "深圳", "广州", "杭州"]
+"my_banks": ["农业银行"],
+"my_cities": ["全国", "南京"]
   },
   "rsshub_mirrors": [
     "https://rsshub.app",
