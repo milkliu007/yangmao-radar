@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-23 17:07 CST",
-  "count": 25,
+  "updated_at": "2026-11-24 00:31 CST",
+  "count": 23,
   "deals": [
     {
       "id": "deal-429121bd21",
@@ -144,29 +144,6 @@
       "deadline": "2026-11-30",
       "source_name": "什么值得买",
       "source_url": "https://www.smzdm.com/p/185999280/"
-    },
-    {
-      "id": "deal-34bb3bc552",
-      "tier": "B",
-      "score": 50,
-      "score_reasons": [
-        "中等收益(约12元)+22",
-        "T3单源线报+12"
-      ],
-      "trust_tier": "T3",
-      "verified_sources": [
-        "赚吧线报"
-      ],
-      "promo_warning": false,
-      "matched_tags": [],
-      "category": "本地生活",
-      "title": "平安好车主免费领 6 瓶百岁山（今日线报）",
-      "benefit": "0 元领取 6 瓶百岁山矿泉水",
-      "steps": "打开平安好车主 App，首页定位切换为「佛山」后进入家庭权益活动扫码领取。实时线报名额随时可能结束，手快有。",
-      "added_date": "2026-11-22",
-      "deadline": "2026-11-23",
-      "source_name": "赚吧线报",
-      "source_url": "https://www.hxm5.com/xianbao/5/"
     },
     {
       "id": "deal-5783db60ea",
@@ -489,29 +466,6 @@
       "deadline": "2026-11-30",
       "source_name": "什么值得买",
       "source_url": "https://www.smzdm.com/p/186265668/"
-    },
-    {
-      "id": "deal-3d9227441b",
-      "tier": "B",
-      "score": 40,
-      "score_reasons": [
-        "小额顺手(约5元)+12",
-        "T3单源线报+12"
-      ],
-      "trust_tier": "T3",
-      "verified_sources": [
-        "赚吧线报"
-      ],
-      "promo_warning": false,
-      "matched_tags": [],
-      "category": "本地生活",
-      "title": "中国电信会员日（1 积分兑 / 话费券放水）",
-      "benefit": "1 积分兑换权益，话费满 5 减 5 / 200 积分福利",
-      "steps": "中国电信 App 搜索「会员日」进入参与，限中国电信手机号用户，名额分批释放。",
-      "added_date": "2026-11-22",
-      "deadline": "2026-11-23",
-      "source_name": "赚吧线报",
-      "source_url": "https://www.hxm5.com/xianbao/5/"
     },
     {
       "id": "deal-f61f8dc39a",
