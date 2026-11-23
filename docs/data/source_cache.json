@@ -1,19 +1,19 @@
 {
   "smzdm-youhui": {
-    "failures": 1,
+    "failures": 2,
     "cooldown_until": 0,
     "etag": "\"e08-aoDcMg5OerZTiuVm3zskF0AcahM\"",
     "last_modified": "Sun, 22 Nov 2026 15:57:18 GMT"
   },
   "smzdm-bank": {
-    "failures": 2,
-    "cooldown_until": 0,
+    "failures": 3,
+    "cooldown_until": 1795511232.9742985,
     "etag": "",
     "last_modified": ""
   },
   "smzdm-life": {
-    "failures": 2,
-    "cooldown_until": 0,
+    "failures": 3,
+    "cooldown_until": 1795511232.9742985,
     "etag": "",
     "last_modified": ""
   },
