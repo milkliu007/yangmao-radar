@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-24 07:55 CST",
+  "updated_at": "2026-11-24 18:56 CST",
   "sources": [
     {
       "id": "smzdm-youhui",
@@ -11,15 +11,15 @@
     {
       "id": "smzdm-bank",
       "name": "什么值得买·银行活动",
-      "status": "cooldown",
-      "message": "连续失败已触发冷却保护，稍后自动恢复",
+      "status": "error",
+      "message": "抓取失败(4/3): 'ascii' codec can't encode characters in position 19-23: ordinal not in range(128)",
       "count": 0
     },
     {
       "id": "smzdm-life",
       "name": "什么值得买·本地生活优惠",
-      "status": "cooldown",
-      "message": "连续失败已触发冷却保护，稍后自动恢复",
+      "status": "error",
+      "message": "抓取失败(4/3): 'ascii' codec can't encode characters in position 19-21: ordinal not in range(128)",
       "count": 0
     },
     {

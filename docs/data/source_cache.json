@@ -6,14 +6,14 @@
     "last_modified": "Sun, 22 Nov 2026 15:57:18 GMT"
   },
   "smzdm-bank": {
-    "failures": 3,
-    "cooldown_until": 1795511232.9742985,
+    "failures": 4,
+    "cooldown_until": 1795604154.2389832,
     "etag": "",
     "last_modified": ""
   },
   "smzdm-life": {
-    "failures": 3,
-    "cooldown_until": 1795511232.9742985,
+    "failures": 4,
+    "cooldown_until": 1795604154.2389832,
     "etag": "",
     "last_modified": ""
   },
