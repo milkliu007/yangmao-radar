@@ -1,7 +1,31 @@
 {
-  "updated_at": "2026-11-24 18:56 CST",
-  "count": 2,
+  "updated_at": "2026-11-25 00:28 CST",
+  "count": 3,
   "deals": [
+    {
+      "id": "deal-5783db60ea",
+      "tier": "B",
+      "score": 50,
+      "score_reasons": [
+        "中等收益(约16元)+22",
+        "T3单源线报+12"
+      ],
+      "trust_tier": "T3",
+      "verified_sources": [
+        "赚吧线报"
+      ],
+      "promo_warning": false,
+      "matched_tags": [],
+      "category": "银行支付",
+      "title": "工商银行小雪节气领 i 豆（保底 1650+ 豆）",
+      "benefit": "小雪问答(200–2026豆) + 小雪映冬色(300豆) + 节气典藏(1000豆) + 消费季(100豆)",
+      "steps": "工行 App 首页顶部进入「小雪」节气活动完成问答与打卡，再搜索「工行消费季」领 100 豆，i 豆可兑换微信立减金或京东 E 卡。",
+      "added_date": "2026-11-22",
+      "deadline": "2026-11-24",
+      "source_name": "赚吧线报",
+      "source_url": "https://www.hxm5.com/xianbao/5/",
+      "archived_date": "2026-11-25"
+    },
     {
       "id": "deal-34bb3bc552",
       "tier": "B",
