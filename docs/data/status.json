@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-28 22:33 CST",
+  "updated_at": "2026-11-29 04:04 CST",
   "sources": [
     {
       "id": "smzdm-youhui",
       "name": "什么值得买·精选好价",
-      "status": "error",
-      "message": "抓取失败(7/3): The read operation timed out",
+      "status": "cooldown",
+      "message": "连续失败已触发冷却保护，稍后自动恢复",
       "count": 0
     },
     {
